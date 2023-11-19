@@ -1,0 +1,66 @@
+.book {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 15px 30px;
+    column-gap: 30px;
+}
+
+.book_image-placeholder {
+    position: relative;
+    width: 80px;
+    height: 100px;
+    background-color: rgb(186, 186, 186);
+    border-radius: 10px;
+}
+
+.book_image-placeholder::after {
+    position: absolute;
+    content: "";
+    height: 90px;
+    width: 2px;
+    background-color: aliceblue;
+    top: 5px;
+    right: 48%;
+    transform: rotate(39deg) translateX(-50%);
+}
+
+.book_image-placeholder::before {
+    position: absolute;
+    content: "";
+    height: 90px;
+    width: 2px;
+    background-color: aliceblue;
+    top: 5px;
+    right: 48%;
+    transform: rotate(323deg) translateX(-50%);
+}
+
+.book_description {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.book_name {
+}
+
+.book_author {
+}
+
+.book_reserve-book {
+    margin-top: auto;
+    background-color: white;
+    border: solid rgb(186, 186, 186) 1px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.book_reserve-book:hover {
+    color: rgb(61, 61, 61);
+}
+
+.book_reserve-book:active {
+    background-color: aliceblue;
+}
