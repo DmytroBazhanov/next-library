@@ -1,5 +1,4 @@
 // @ts-nocheck
-import { graphQLClient } from "./Client";
 
 const getBooksQuery = `{
     books {
@@ -11,11 +10,24 @@ const getBooksQuery = `{
 }`;
 
 export const getBooks = async () => {
-    // const response = await graphQLClient.query(getBooksQuery).toPromise();
-    const response = await graphQLClient.query(getBooksQuery).toPromise();
+    const response = await fetch("http://localhost:8000/graphql", {
+        url: "http://localhost:8000/graphql",
+        method: "POST",
+        next: { revalidate: 1 },
+        headers: {
+            "content-type": "application/json",
+
+        },
+        body: JSON.stringify({
+            query: getBooksQuery,
+            variables: {},
+        }),
+    });
+
     if (response.error) {
         console.log(response.error);
     }
 
-    return response.data.books;
-}
+    const { data } = await response.json();
+    return data.books;
+};
