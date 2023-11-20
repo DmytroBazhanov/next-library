@@ -7,7 +7,7 @@ export const graphQLClient = new Client({
     exchanges: [cacheExchange, fetchExchange],
     fetchOptions: {
         headers: {
-            "Cache-Control": "no-store",
+            "cache": "no-store",
         },
     },
 });
@@ -16,7 +16,7 @@ export const noCacheRequest = (query: string) =>
     fetch("http://localhost:8000/graphql", {
         url: "http://localhost:8000/graphql",
         method: "POST",
-        next: { revalidate: 1 },
+        cache: "no-store",
         headers: {
             "content-type": "application/json",
         },

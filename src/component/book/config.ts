@@ -4,4 +4,5 @@ export interface IBook {
     tags: string;
     name: string;
     text?: string;
+    isReserved?: boolean;
 }

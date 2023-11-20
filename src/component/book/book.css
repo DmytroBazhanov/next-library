@@ -48,7 +48,7 @@
 .book_author {
 }
 
-.book_reserve-book {
+[class*="book_reserve-book"] {
     margin-top: auto;
     background-color: white;
     border: solid rgb(186, 186, 186) 1px;
@@ -63,4 +63,8 @@
 
 .book_reserve-book:active {
     background-color: aliceblue;
+}
+
+.book_reserve-book__reserved {
+    cursor: not-allowed;
 }
