@@ -1,7 +1,7 @@
 // @ts-nocheck
-import { graphQLClient } from "./Client";
+import { graphQLClient, noCacheRequest } from "./Client";
 
-const getReaderReservationsQuery = (readerID: String) => `{
+const getReaderReservationsQuery = (readerID: string): string => `{
     readerReservations(readerID: "${readerID}") {
         bookID
         readerID
@@ -10,20 +10,10 @@ const getReaderReservationsQuery = (readerID: String) => `{
 }`;
 
 export const getReaderReservations = async (readerID: string) => {
-    const response = await graphQLClient
-        .query(getReaderReservationsQuery(readerID), null, {
-            context: {
-                headers: {
-                    key: "Cache-Control",
-                    value: "no-store",
-                },
-            },
-        })
-        .toPromise();
+    const response = await noCacheRequest(getReaderReservationsQuery(readerID));
     if (response.error) {
         console.log(response.error);
     }
 
-    console.log(response.data);
-    // return response.data;
+    return response.data;
 };
